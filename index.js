@@ -1,11 +1,8 @@
-let humanScore = 0;
-let computerScore = 0;
-
 function getComputerChoice() {
   let random = Math.floor(Math.random() * 3);
-  if (random === 1) {
+  if (random === 0) {
     return "rock";
-  } else if (random === 2) {
+  } else if (random === 1) {
     return "paper";
   } else {
     return "scissors";
@@ -14,12 +11,12 @@ function getComputerChoice() {
 
 function getHumanChoice() {
   let choice = prompt("Enter your choice: ");
-  return choice.toLocaleUpperCase();
+  return choice.toLocaleLowerCase();
 }
 
 function playRound(humanChoice, computerChoice) {
   if (humanChoice == computerChoice) {
-    return "draw";
+    console.log("Draw!");
   }
 
   if (
@@ -33,4 +30,26 @@ function playRound(humanChoice, computerChoice) {
     computerScore++;
     console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
   }
+}
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playGame() {
+  const humanSelection = getHumanChoice();
+  const computerSelection = getComputerChoice();
+  console.log(humanSelection);
+  console.log(computerSelection);
+
+  playRound(humanSelection, computerSelection);
+}
+
+for (let i = 0; i < 5; i++) {
+  playGame();
+}
+
+if (humanScore > computerScore) {
+  console.log(`You win! Final score: ${humanScore} - ${computerScore}`);
+} else {
+  console.log(`You lose! Final score: ${humanScore} - ${computerScore}`);
 }
