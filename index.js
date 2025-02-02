@@ -2,17 +2,6 @@ let humanScore = 0;
 let computerScore = 0;
 let buttonChoice = "";
 
-function getComputerChoice() {
-  let random = Math.floor(Math.random() * 3);
-  if (random === 0) {
-    return "rock";
-  } else if (random === 1) {
-    return "paper";
-  } else {
-    return "scissors";
-  }
-}
-
 const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
@@ -31,6 +20,17 @@ scissorsButton.addEventListener("click", (event) => {
   buttonChoice = event.target.id;
   playGame();
 });
+
+function getComputerChoice() {
+  let random = Math.floor(Math.random() * 3);
+  if (random === 0) {
+    return "rock";
+  } else if (random === 1) {
+    return "paper";
+  } else {
+    return "scissors";
+  }
+}
 
 function playRound(humanChoice, computerChoice) {
   if (humanChoice == computerChoice) {
