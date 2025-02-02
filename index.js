@@ -84,12 +84,7 @@ function playGame() {
 
   heading2.textContent = `Press a button to play!`;
 
-  // parse the choice to the DOM
-  console.log(humanSelection);
-  console.log(computerSelection);
-
   playRound(humanSelection, computerSelection);
-
   endGame();
 }
 
