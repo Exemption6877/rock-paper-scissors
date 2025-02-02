@@ -1,3 +1,7 @@
+let humanScore = 0;
+let computerScore = 0;
+let buttonChoice = "";
+
 function getComputerChoice() {
   let random = Math.floor(Math.random() * 3);
   if (random === 0) {
@@ -9,10 +13,24 @@ function getComputerChoice() {
   }
 }
 
-function getHumanChoice() {
-  let choice = prompt("Enter your choice: ");
-  return choice.toLocaleLowerCase();
-}
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
+
+rockButton.addEventListener("click", (event) => {
+  buttonChoice = event.target.id;
+  playGame();
+});
+
+paperButton.addEventListener("click", (event) => {
+  buttonChoice = event.target.id;
+  playGame();
+});
+
+scissorsButton.addEventListener("click", (event) => {
+  buttonChoice = event.target.id;
+  playGame();
+});
 
 function playRound(humanChoice, computerChoice) {
   if (humanChoice == computerChoice) {
@@ -32,33 +50,24 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-let humanScore = 0;
-let computerScore = 0;
-
 function playGame() {
-  const humanSelection = getHumanChoice();
+  if (!buttonChoice) return;
+  const humanSelection = buttonChoice;
   const computerSelection = getComputerChoice();
   console.log(humanSelection);
   console.log(computerSelection);
 
   playRound(humanSelection, computerSelection);
+
+  if (humanScore === 5) {
+    console.log("Human wins!");
+    rockButton.removeEventListener("click", () => {});
+    paperButton.removeEventListener("click", () => {});
+    scissorsButton.removeEventListener("click", () => {});
+  } else if (computerScore === 5) {
+    console.log("Computer wins!");
+    rockButton.removeEventListener("click", () => {});
+    paperButton.removeEventListener("click", () => {});
+    scissorsButton.removeEventListener("click", () => {});
+  }
 }
-
-// for (let i = 0; i < 5; i++) {
-//   playGame();
-// }
-
-if (humanScore > computerScore) {
-  console.log(`You win! Final score: ${humanScore} - ${computerScore}`);
-} else {
-  console.log(`You lose! Final score: ${humanScore} - ${computerScore}`);
-}
-
-const allButtons = document.querySelectorAll("button");
-
-allButtons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    const choice = event.target.id;
-    console.log(choice);
-  });
-});
