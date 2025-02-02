@@ -51,9 +51,10 @@ function playRound(humanChoice, computerChoice) {
 }
 
 function playGame() {
-  if (!buttonChoice) return;
   const humanSelection = buttonChoice;
   const computerSelection = getComputerChoice();
+
+  // parse the choice to the DOM
   console.log(humanSelection);
   console.log(computerSelection);
 
@@ -61,13 +62,14 @@ function playGame() {
 
   if (humanScore === 5) {
     console.log("Human wins!");
-    rockButton.removeEventListener("click", () => {});
-    paperButton.removeEventListener("click", () => {});
-    scissorsButton.removeEventListener("click", () => {});
+    resetGame();
   } else if (computerScore === 5) {
     console.log("Computer wins!");
-    rockButton.removeEventListener("click", () => {});
-    paperButton.removeEventListener("click", () => {});
-    scissorsButton.removeEventListener("click", () => {});
+    resetGame();
   }
+}
+
+function resetGame() {
+  let humanScore = 0;
+  let computerScore = 0;
 }
