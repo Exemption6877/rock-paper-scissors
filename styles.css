@@ -10,6 +10,10 @@ body {
   display: flex;
 }
 
+.output {
+  flex-direction: column;
+}
+
 button {
   background-color: #9290c3;
   color: white;

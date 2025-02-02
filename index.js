@@ -44,12 +44,21 @@ function playGame() {
   playRound(humanSelection, computerSelection);
 }
 
-for (let i = 0; i < 5; i++) {
-  playGame();
-}
+// for (let i = 0; i < 5; i++) {
+//   playGame();
+// }
 
 if (humanScore > computerScore) {
   console.log(`You win! Final score: ${humanScore} - ${computerScore}`);
 } else {
   console.log(`You lose! Final score: ${humanScore} - ${computerScore}`);
 }
+
+const allButtons = document.querySelectorAll("button");
+
+allButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    const choice = event.target.id;
+    console.log(choice);
+  });
+});
